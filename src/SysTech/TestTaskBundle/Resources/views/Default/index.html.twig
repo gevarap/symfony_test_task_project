@@ -1,0 +1,49 @@
+{% include '@BaseSynchronizeBundle/header.html.twig' %}
+
+{% block body %}
+    <h1>TableRelations list</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Sourcetable</th>
+            <th>Targettable</th>
+            <th>Sourceentity</th>
+            <th>Targetentity</th>
+            <th>Sourcefield</th>
+            <th>Targetfield</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tableRelation in tableRelations %}
+            <tr>
+                <td><a href="{{ path('/common/tablerelations_show', { 'id': tableRelation.id }) }}">{{ tableRelation.id }}</a></td>
+                <td>{{ tableRelation.sourceTable }}</td>
+                <td>{{ tableRelation.targetTable }}</td>
+                <td>{{ tableRelation.sourceEntity }}</td>
+                <td>{{ tableRelation.targetEntity }}</td>
+                <td>{{ tableRelation.sourceField }}</td>
+                <td>{{ tableRelation.targetField }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('/common/tablerelations_show', { 'id': tableRelation.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('/common/tablerelations_edit', { 'id': tableRelation.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}

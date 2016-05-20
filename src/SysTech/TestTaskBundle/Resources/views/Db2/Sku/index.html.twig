@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sku list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Createdat</th>
+                <th>Modifiedat</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sku in skus %}
+            <tr>
+                <td><a href="{{ path('/db2/sku_show', { 'id': sku.id }) }}">{{ sku.id }}</a></td>
+                <td>{% if sku.createdAt %}{{ sku.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if sku.modifiedAt %}{{ sku.modifiedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ sku.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('/db2/sku_show', { 'id': sku.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('/db2/sku_edit', { 'id': sku.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('/db2/sku_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

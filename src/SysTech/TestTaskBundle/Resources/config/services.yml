@@ -1,0 +1,4 @@
+services:
+#    base_synchronize.example:
+#        class: SysTech\TestTaskBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

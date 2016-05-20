@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Employee list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Created_at</th>
+                <th>Modified_at</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td><a href="{{ path('/db1/employee_show', { 'id': employee.id }) }}">{{ employee.id }}</a></td>
+                <td>{% if employee.createdat %}{{ employee.createdat|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if employee.modifiedat %}{{ employee.modifiedat|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ employee.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('/db1/employee_show', { 'id': employee.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('/db1/employee_edit', { 'id': employee.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('/db1/employee_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

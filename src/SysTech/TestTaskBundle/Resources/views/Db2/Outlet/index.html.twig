@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Outlet list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Createdat</th>
+                <th>Modifiedat</th>
+                <th>Name</th>
+                <th>Ownername</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for outlet in outlets %}
+            <tr>
+                <td><a href="{{ path('/db2/outlet_show', { 'id': outlet.id }) }}">{{ outlet.id }}</a></td>
+                <td>{% if outlet.createdAt %}{{ outlet.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if outlet.modifiedAt %}{{ outlet.modifiedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ outlet.name }}</td>
+                <td>{{ outlet.ownerName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('/db2/outlet_show', { 'id': outlet.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('/db2/outlet_edit', { 'id': outlet.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('/db2/outlet_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

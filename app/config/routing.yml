@@ -1,0 +1,7 @@
+base_synchronize:
+    resource: "@BaseSynchronizeBundle/Controller/"
+    type:     annotation
+    prefix:   /synchronize
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

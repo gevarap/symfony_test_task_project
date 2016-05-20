@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Owner list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Createdat</th>
+                <th>Modifiedat</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for owner in owners %}
+            <tr>
+                <td><a href="{{ path('/db1/owner_show', { 'id': owner.id }) }}">{{ owner.id }}</a></td>
+                <td>{% if owner.createdAt %}{{ owner.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if owner.modifiedAt %}{{ owner.modifiedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ owner.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('/db1/owner_show', { 'id': owner.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('/db1/owner_edit', { 'id': owner.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('/db1/owner_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
