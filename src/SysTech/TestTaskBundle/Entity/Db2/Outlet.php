@@ -33,7 +33,7 @@ class Outlet
      *
      * @ORM\Column(name="modifedAt", type="integer")
      */
-    private $modifedAt;
+    private $modifiedAt;
 
     /**
      * @var string
@@ -93,7 +93,7 @@ class Outlet
      */
     public function setModifiedAt($modifiedAt)
     {
-        $this->modifedAt = $modifiedAt;
+        $this->modifiedAt = $modifiedAt;
 
         return $this;
     }
@@ -105,7 +105,7 @@ class Outlet
      */
     public function getModifiedAt()
     {
-        return $this->modifedAt;
+        return $this->modifiedAt;
     }
 
     /**

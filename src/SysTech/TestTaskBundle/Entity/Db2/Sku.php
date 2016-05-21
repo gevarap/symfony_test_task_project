@@ -19,7 +19,7 @@ class Sku
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\OneToMany(targetEntity="SkuStock", mappedBy="skuId")
+     * @ORM\OneToMany(targetEntity="SkuStock", mappedBy="skuId", cascade={"persist", "remove"})
      */
     private $id;
 

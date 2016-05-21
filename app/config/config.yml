@@ -45,31 +45,31 @@ doctrine:
         default_connection: db1
         connections:
           db1:
-              driver:   pdo_mysql
+              driver:   pdo_sqlite
               host:     "%database_host%"
               port:     "%database_port%"
               dbname:   "%database_name%"
               user:     "%database_user%"
               password: "%database_password%"
-              #path:     "%database_path%"
+              path:     "%database_path%"
               charset:  UTF8
           db2:
-              driver:   pdo_mysql
+              driver:   pdo_sqlite
               host:     "%database_host%"
               port:     "%database_port%"
               dbname:   "%database_name2%"
               user:     "%database_user%"
               password: "%database_password%"
-              #path:     "%database_path2%"
+              path:     "%database_path2%"
               charset:  UTF8
           commonDb:
-              driver:   pdo_mysql
+              driver:   pdo_sqlite
               host:     "%common_database_host%"
               port:     "%common_database_port%"
               dbname:   "%common_database_name%"
               user:     "%common_database_user%"
               password: "%common_database_password%"
-              #path:     "%common_database_path%"
+              path:     "%common_database_path%"
               charset:  UTF8
               # if using pdo_sqlite as your database driver:
               #   1. add the path in parameters.yml

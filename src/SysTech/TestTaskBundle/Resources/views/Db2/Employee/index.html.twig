@@ -17,8 +17,8 @@
         {% for employee in employees %}
             <tr>
                 <td><a href="{{ path('/db2/employee_show', { 'id': employee.id }) }}">{{ employee.id }}</a></td>
-                <td>{% if employee.createdat %}{{ employee.createdat|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if employee.modifiedat %}{{ employee.modifiedat|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if employee.createdAt %}{{ employee.createdat|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if employee.modifiedAt %}{{ employee.modifiedat|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ employee.name }}</td>
                 <td>
                     <ul>

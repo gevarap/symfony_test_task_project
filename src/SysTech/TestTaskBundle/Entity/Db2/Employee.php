@@ -27,12 +27,12 @@ class Employee
   /**
    * @ORM\Column(type="integer")
    */
-  private $created_at;
+  private $createdAt;
 
   /**
    * @ORM\Column(type="integer")
    */
-  private $modified_at;
+  private $modifiedAt;
 
   /**
    * @ORM\Column(type="string")
@@ -58,7 +58,7 @@ class Employee
      */
     public function setCreatedAt($createdAt)
     {
-        $this->created_at = $createdAt;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
@@ -70,7 +70,7 @@ class Employee
      */
     public function getCreatedAt()
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
     /**
@@ -82,7 +82,7 @@ class Employee
      */
     public function setModifiedAt($modifiedAt)
     {
-        $this->modified_at = $modifiedAt;
+        $this->modifiedAt = $modifiedAt;
 
         return $this;
     }
@@ -94,7 +94,7 @@ class Employee
      */
     public function getModifiedAt()
     {
-        return $this->modified_at;
+        return $this->modifiedAt;
     }
 
     /**

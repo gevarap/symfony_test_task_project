@@ -20,7 +20,7 @@ class TableRelations {
    * @ORM\Id
    * @ORM\Column(type="integer")
    * @ORM\GeneratedValue(strategy="AUTO")
-   * @ORM\OneToMany(targetEntity="Mapping", mappedBy="relationId")
+   * @ORM\OneToMany(targetEntity="Mapping", mappedBy="relationId", cascade={"persist", "remove"})
    */
   private $id;
 

@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\VarDumper\VarDumper;
 use SysTech\TestTaskBundle\Entity\Db1\Employee;
 use SysTech\TestTaskBundle\Form\Db1\EmployeeType;
 use SysTech\TestTaskBundle\Entity\Db1\Repository as Repository;
@@ -27,7 +28,6 @@ class EmployeeController extends Controller
     {
         $em = $this->getDoctrine()->getManager('db1');
         $employees = $em->getRepository('BaseSynchronizeBundle:Employee')->findAll();
-
         return $this->render('BaseSynchronizeBundle:Db1:Employee/index.html.twig', array(
             'employees' => $employees,
         ));

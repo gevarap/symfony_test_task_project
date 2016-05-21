@@ -117,6 +117,12 @@ class TableRelationsController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager('commonDb');
+            /**
+             * @HACK  for `cleverest` database SQLite
+             */
+            if ($this->getDoctrine()->getConnection('db2')->getParams()['driver'] === 'pdo_sqlite') {
+                $this->getDoctrine()->getConnection('db2')->fetchAssoc("PRAGMA foreign_keys = ON");
+            }
             $em->remove($tableRelation);
             $em->flush();
         }
