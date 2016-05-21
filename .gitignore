@@ -2,3 +2,5 @@
 /vendor/
 /web/bundles/
 /var/
+phpunit.xml.dist
+composer.lock
