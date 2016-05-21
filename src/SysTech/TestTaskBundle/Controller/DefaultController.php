@@ -4,6 +4,7 @@ namespace SysTech\TestTaskBundle\Controller;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -393,6 +394,10 @@ class DefaultController extends Controller {
     );
   }
 
+  /**
+   * @param $from
+   * @param $params
+   */
   private function synchronizeDelete($from, $params) {
 
     /** @var ObjectManager $mapping_entity_manager */
@@ -401,12 +406,20 @@ class DefaultController extends Controller {
     $from_cortege = $from['cortege'];
     /** @var ObjectManager $from_entity_manager */
     $from_entity_manager = $from['entity_manager'];
+    /**
+     * @HACK  for `cleverest` database SQLite
+     */
+    /** @var EntityManager $from_entity_manager */
+    if ($from_entity_manager->getConnection()->getParams()['driver'] === 'pdo_sqlite') {
+      $from_entity_manager->getConnection()->fetchAssoc("PRAGMA foreign_keys = ON");
+    }
     $from_entity_manager->remove($from_cortege);
     $from_entity_manager->flush();
     if ($mapping_for_delete) {
       $mapping_entity_manager->remove($mapping_for_delete);
       $mapping_entity_manager->flush();
     }
+
   }
 
 }
