@@ -38,10 +38,6 @@ class DefaultController extends Controller {
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
-      // ... perform some action, such as saving the task to the database
-
-
-
         /** @var MappingRepository $mapping_repository */
         $mapping_repository = $em->getRepository('BaseSynchronizeBundle:Mapping');
         $mapping = $mapping_repository->findAllRelationKeyedIds();
